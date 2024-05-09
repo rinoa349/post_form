@@ -2,11 +2,15 @@
 session_start();
 require('../library.php');
 
-$form = [
+if (isset($_GET['action']) && $_GET['action'] === 'rewrite' && isset($_SESSION['form'])) {
+  $form = $_SESSION['form'];
+} else {
+  $form = [
   'name' => '',
   'email' => '',
   'password' => ''
 ];
+}
 $error = [];
 
 /* フォームの内容をチェック */

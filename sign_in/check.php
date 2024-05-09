@@ -2,7 +2,9 @@
 session_start();
 require('../library.php');
 
+// もし、$_SESSION['form']に値が入っていたら
 if (isset($_SESSION['form'])) {
+  // $formに格納する
   $form = $_SESSION['form'];
 } else {
   header('Location: index.php');
