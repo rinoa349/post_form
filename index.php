@@ -9,6 +9,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
   header('Location: login.php');
   exit();
 }
+$db = dbconnect();
+
+//メッセージの投稿
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
+  $stmt = $db->prepare('insert into posts (message, member_id) values(?, ?)');
+  if (!$stmt) {
+    die($db->error);
+  }
+  $stmt->bind_param('si', $message, $id);
+  $success = $stmt->execute();
+  if (!$success) {
+    die($db->error);
+  }
+
+  header('Location: index.php');
+  exit();
+}
 
 ?>
 <!DOCTYPE html>
@@ -28,7 +46,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
       <div><a href="logout.php">ログアウト</a></div>
       <form action="" method="post">
         <dl>
-          <dt>()さん、書き込みをどうぞ</dt>
+          <dt><?php echo h($name); ?>さん、書き込みをどうぞ</dt>
           <dd>
             <textarea name="message" cols="50" rows="5"></textarea>
           </dd>
@@ -40,6 +58,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
         </div>
       </form>
 
+      <?php
+      $stmt = $db->prepare('select p.id, p.member_id, p.message, p.created, m.name from posts p, members m where m.id=p.member_id order by id desc');
+      if (!$stmt) {
+        die($db->error);
+      }
+      $success = $stmt->execute();
+      if (!$success) {
+        die($db->error);
+      }
+      $stmt->bind_result($id, $member_id, $message, $created, $name);
+
+      while ($stmt->fetch()) :
+      ?>
+      <div class="msg">
+          <p><?php echo h($message); ?><span class="name">（<?php echo h($name); ?>）</span></p>
+              <p class="day"><a href="view.php?id=<?php echo h($id); ?>"><?php echo h($created); ?></a>
+            <?php if ($_SESSION['id'] === $member_id) : ?>
+                [<a href="delete.php?id=<?php echo h($id); ?>" style="color: #F33;">削除</a>]
+            <?php endif; ?>
+          </p>
+      </div>
+        <?php endwhile; ?>
     </div>
   </div>
 </body>
