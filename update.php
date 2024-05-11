@@ -1,4 +1,35 @@
+<?php
+session_start();
+require('library.php');
 
+if (isset($_SESSION['id']) && isset($_SESSION['name'])) {
+  $id = $_SESSION['id'];
+  $name = $_SESSION['name'];
+} else {
+  header('Location: login.php');
+  exit();
+}
+
+$db = dbconnect();
+
+if (!empty($_POST)) {
+  if ($_POST['message'] !== '') {
+    $stmt = $db->prepare('update posts set message=?, created=? where id=?');
+    if (!$stmt) {
+      die($db->error);
+    }
+    $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
+    $stmt->bind_param('sii', $message, $created, $id);
+
+    $success = $stmt->execute();
+    if (!$success) {
+      die($db->error);
+    }
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
