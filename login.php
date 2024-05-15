@@ -83,9 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="password" name="password" size="35" maxlength="255" value="<?php echo h($password); ?>" />
           </dd>
         </dl>
-        <div>
-          <input type="submit" value="ログインする">
-        </div>
+        <p class="sub_mit">
+          <input type="submit" style="font-size: 18px" value="ログインする">
+        </p>
       </form>
     </div>
   </div>

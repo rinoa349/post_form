@@ -36,24 +36,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>投稿掲示板</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id=wrap>
+  <div id="wrap">
     <div id="head">
       <h1>投稿掲示板</h1>
     </div>
     <div id="content">
-      <div><a href="logout.php">ログアウト</a></div>
+      <div class="log_out"><a href="logout.php">ログアウト</a></div>
       <form action="" method="post">
         <dl>
           <dt><?php echo h($name); ?>さん、書き込みをどうぞ</dt>
           <dd>
-            <textarea name="message" cols="50" rows="5"></textarea>
+            <textarea name="message" cols="50" rows="7"></textarea>
           </dd>
         </dl>
         <div>
           <p>
-            <input type="submit" value="投稿する">
+            <input type="submit" style="font-size: 18px" value="投稿する">
           </p>
         </div>
       </form>
@@ -75,7 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <p><?php echo h($message); ?><span class="name">（<?php echo h($name); ?>）</span></p>
               <p class="day"><a href="view.php?id=<?php echo h($id); ?>"><?php echo h($created); ?></a>
             <?php if ($_SESSION['id'] === $member_id) : ?>
-                [<a href="delete.php?id=<?php echo h($id); ?>" style="color: #F33;">削除</a>]
+              [<a href="edit.php?id=<?php echo h($id); ?>" style="color: #F33;">編集</a>] | 
+              [<a href="delete.php?id=<?php echo h($id); ?>" style="color: #F33;">削除</a>]
             <?php endif; ?>
           </p>
       </div>

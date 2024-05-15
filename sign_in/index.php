@@ -66,13 +66,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>会員登録</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <div id="wrap">
     <div id="head">
       <h1>会員登録</h1>
     </div>
-  </div>
   <div id="content">
     <form action="" method="post">
       <dl>
@@ -108,8 +108,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </dd>
 
       </dl>
-      <div><input type="submit" value="入力内容を確認する"/></div>
+      <p><input type="submit" style="font-size: 18px" value="入力内容を確認する"/></p>
     </form>
+  </div>
   </div>
 </body>
 </html>

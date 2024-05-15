@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <dt>パスワード</dt>
           <dd>[ 表示されません ]</dd>
         </dl>
-        <div><a href="index.php?action=rewrite">&laquo;書き直す</a> | <input type="submit" value="登録する" /></div>
+        <div><a href="index.php?action=rewrite">&laquo;書き直す</a> | <input type="submit" style="font-size: 18px" value="登録する" /></div>
       </form>
     </div>
   </div>

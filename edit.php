@@ -33,8 +33,12 @@ $stmt->fetch();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <title>投稿掲示板</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="wrap">
@@ -42,19 +46,19 @@ $stmt->fetch();
       <h1>編集画面</h1>
     </div>
     <div id="content">
-      <a href="logout.php">ログアウトする</a>
-      <p>&laquo;<a href="index.php">一覧に戻る</p>
+      <div class="log_out"><a href="logout.php">ログアウト</a></div>
+      <p>&laquo;<a href="index.php">一覧に戻る</a></p>
       <form action="update.php" method="post">
         <dl>
           <dt><?php echo h($name); ?>さん</dt>
           <dd>
             <input type="hidden" name="id" value="<?php echo h($id); ?>">
-            <textarea name="message" cols="50" rows="5"><?php echo h($message); ?></textarea>
+            <textarea name="message" cols="50" rows="7"><?php echo h($message); ?></textarea>
           </dd>
         </dl>
         <div>
           <p>
-            <input type="submit" value="編集する">
+            <input type="submit" style="font-size: 18px" value="変更する">
           </p>
         </div>
       </form>

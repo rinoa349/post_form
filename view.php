@@ -35,7 +35,7 @@ $db = dbconnect();
       <h1>投稿掲示板</h1>
     </div>
     <div id="content">
-      <p>&laquo;<a href="index.php">一覧に戻る</p>
+      <p class="back_page">&laquo;<a href="index.php">一覧に戻る</a></p>
         <?php
           $stmt = $db->prepare('select p.id, p.member_id, p.message, p.created, m.name from posts p, members m where p.id=? and m.id=p.member_id order by id desc');
           if (!$stmt) {
@@ -52,8 +52,9 @@ $db = dbconnect();
       <div class="msg">
         <p><?php echo h($message); ?><span class="name">（<?php echo h($name); ?>）</span></p>
             <p class="day"><a href="view.php?id="><?php echo h($created); ?></a>
-              [<a href="delete.php?id=" style="color: #F33;">削除</a>] | 
-              [<a href="edit.php?id=<?php echo h($id); ?>" style="color: #F33;">編集</a>]
+              [<a href="edit.php?id=<?php echo h($id); ?>" style="color: #F33;">編集</a>] | 
+              [<a href="delete.php?id=<?php echo h($id); ?>" style="color: #F33;">削除</a>]
+              
             </p>
       </div>
       <?php else : ?>

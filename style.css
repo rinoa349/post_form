@@ -1,0 +1,114 @@
+body {
+  font-size:19px;
+  font-weight: normal;
+}
+
+body {
+  background: url(images/sakura_bg.png);
+  color: #333;
+}
+
+#wrap {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgb(253, 247, 247);
+}
+
+#head {
+  padding: 20px;
+  margin-bottom: 20px;
+  background: url(images/sakura_03.jpeg);
+}
+
+#head h1 {
+  text-decoration: none;
+}
+
+#content {
+	padding: 20px;
+	min-height: 490px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+* html #content {
+	height: 490px;
+}
+
+dl {
+	margin-bottom: 10px;
+}
+
+dt {
+	padding-left: 5px;
+	margin-bottom: 5px;
+}
+
+dd {
+	margin-bottom: 0.5em;
+}
+
+.required {
+	background-color: #BB1850;
+	color: #fff;
+	font-size: 90%;
+	padding: 2px;
+	margin-left: 10px;
+}
+.log_out .back_page a {
+  padding-left: 45%;
+  text-decoration: none;
+}
+
+#content .log_out a {
+  padding-left: 70%;
+  text-decoration: none;
+}
+
+.sub_mit {
+  font-size: 18px;
+}
+
+p input {
+  padding: 10px;
+  margin-top: 30px;
+  margin-left: 40px;
+  border-radius: 6px;
+  border: bold;
+}
+
+#lead {
+	margin-bottom: 1em;
+}
+
+.msg{
+	clear: both;
+	border-top: 1px solid #ccc;
+	padding: 10px 0;
+  text-decoration: none;
+}
+
+.msg p{
+	margin: 0;
+  text-decoration: none;
+}
+
+.msg .day,
+.msg .day a {
+	font-size: 80%;
+	color: #999;
+  text-decoration: none;
+}
+
+textarea {
+  font-size: 18px;
+}
+
+
+* {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
